@@ -18,12 +18,13 @@ export function CreateIndividualForm() {
     <form
       className="grid gap-4 md:grid-cols-2"
       action={(fd) => {
-        startTransition(async () => {
-          const res = await createIndividual(fd);
-          if (!res.ok) return toast.error(res.message);
-          toast.success("Individual created + QR generated");
-          router.push(`/individuals/${res.id}`);
-          router.refresh();
+        startTransition(() => {
+          createIndividual(fd).then((res) => {
+            if (!res.ok) return toast.error(res.message);
+            toast.success("Individual created + QR generated");
+            router.push(`/individuals/${res.id}`);
+            router.refresh();
+          });
         });
       }}
     >
