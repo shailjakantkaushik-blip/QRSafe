@@ -42,14 +42,13 @@ export default function IndividualMap({ individualId, guardianLocation }: Indivi
   // Mapbox Directions API or similar can be used for directions
   return (
     <Map
-      initialViewState={{
-        longitude: scanLocation.longitude,
-        latitude: scanLocation.latitude,
-        zoom: 13,
-      }}
-      style={{ width: "100%", height: 400 }}
+      latitude={scanLocation.latitude}
+      longitude={scanLocation.longitude}
+      zoom={13}
+      width="100%"
+      height={400}
       mapStyle="mapbox://styles/mapbox/streets-v11"
-      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
+      mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
     >
       {/* Add markers for scanLocation and guardianLocation */}
     </Map>
