@@ -19,7 +19,7 @@ export function AdminQrDownloadButton({
       
       // Create a temporary link and trigger download
       const link = document.createElement("a");
-      link.href = res.url;
+      link.href = res.url ?? "";
       link.download = `qr-${individualName}-${individualId}.png`;
       document.body.appendChild(link);
       link.click();
