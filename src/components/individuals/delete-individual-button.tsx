@@ -21,11 +21,12 @@ export function DeleteIndividualButton({
       return;
     }
 
-    startTransition(async () => {
-      const res = await deleteIndividual(individualId);
-      if (!res.ok) return toast.error(res.message);
-      toast.success("Individual deleted");
-      router.push("/individuals");
+    startTransition(() => {
+      deleteIndividual(individualId).then((res) => {
+        if (!res.ok) return toast.error(res.message);
+        toast.success("Individual deleted");
+        router.push("/individuals");
+      });
     });
   };
 
