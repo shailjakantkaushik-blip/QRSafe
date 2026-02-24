@@ -12,10 +12,11 @@ export function DownloadQrButton({ individualId }: { individualId: string }) {
     <Button
       disabled={pending}
       onClick={() => {
-        startTransition(async () => {
-          const res = await getQrSignedUrl(individualId);
-          if (!res.ok) return toast.error(res.message);
-          window.open(res.url, "_blank", "noreferrer");
+        startTransition(() => {
+          getQrSignedUrl(individualId).then((res) => {
+            if (!res.ok) return toast.error(res.message);
+            window.open(res.url, "_blank", "noreferrer");
+          });
         });
       }}
     >
