@@ -4,7 +4,12 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 
 const Map = dynamic(() => import("react-map-gl"), { ssr: false });
 
-export default function IndividualMap({ individualId, guardianLocation }) {
+interface IndividualMapProps {
+  individualId: string;
+  guardianLocation: { latitude: number; longitude: number };
+}
+
+export default function IndividualMap({ individualId, guardianLocation }: IndividualMapProps) {
   const [scanLocation, setScanLocation] = useState(null);
 
   useEffect(() => {
