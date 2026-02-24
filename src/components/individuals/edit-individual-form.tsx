@@ -37,12 +37,13 @@ export function EditIndividualForm({
   return (
     <form
       action={(formData) => {
-        startTransition(async () => {
-          const res = await updateIndividual(individual.id, formData);
-          if (!res.ok) return toast.error(res.message);
-          toast.success("Individual updated");
-          router.push(`/individuals/${individual.id}`);
-        })
+        startTransition(() => {
+          updateIndividual(individual.id, formData).then((res) => {
+            if (!res.ok) return toast.error(res.message);
+            toast.success("Individual updated");
+            router.push(`/individuals/${individual.id}`);
+          });
+        });
       }}
       className="space-y-6"
     >
