@@ -16,7 +16,14 @@ export async function notifyGuardian({
   latitude,
   longitude,
   scannedAt,
-}) {
+}: {
+    guardianPhone: string;
+    guardianEmail: string;
+    individualName: string;
+    latitude: number;
+    longitude: number;
+    scannedAt: string;
+  }) {
   const mapsUrl = `https://maps.google.com/?q=${latitude},${longitude}`;
   const message = `Alert: ${individualName} was scanned at ${scannedAt}. Location: ${mapsUrl}`;
 
