@@ -6,7 +6,7 @@ const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PU
 
 const supabase = createClient(supabaseUrl!, supabaseKey!);
 
-export async function GET(request) {
+export async function GET(request: Request) {
   const url = new URL(request.url);
   const guardianId = url.searchParams.get("guardian_id");
   if (!guardianId) {
